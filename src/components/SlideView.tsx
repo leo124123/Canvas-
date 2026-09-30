@@ -123,7 +123,12 @@ export const SlideView: React.FC<SlideViewProps> = ({
         onMouseMove={handleStageMouseMove}
         onMouseLeave={handleStageMouseLeave}
       >
-        <TeamRosterView initialMembers={slide.teamMembers} />
+        <TeamRosterView 
+          initialMembers={slide.teamMembers}
+          title={slide.title}
+          titleHighlight={slide.titleHighlight}
+          description={slide.description}
+        />
       </div>
     );
   }

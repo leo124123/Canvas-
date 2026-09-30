@@ -13,6 +13,9 @@ import { sound } from '../utils/soundEngine';
 
 interface TeamRosterViewProps {
   initialMembers?: TeamMember[];
+  title?: string;
+  titleHighlight?: string;
+  description?: string;
 }
 
 const DEFAULT_MEMBERS: TeamMember[] = [
@@ -25,7 +28,12 @@ const DEFAULT_MEMBERS: TeamMember[] = [
   { id: 7, role: 'Integrante 7', name: 'Nombre Integrante 7', matricula: 'Mat. 2024-0007', topic: 'Negocios, ingeniería y otras áreas' }
 ];
 
-export const TeamRosterView: React.FC<TeamRosterViewProps> = ({ initialMembers }) => {
+export const TeamRosterView: React.FC<TeamRosterViewProps> = ({ 
+  initialMembers,
+  title = 'Integrantes del',
+  titleHighlight = 'Equipo y Matrícula',
+  description = 'Asignación temática para el Tema 4 y La Computadora en las Áreas del Saber.'
+}) => {
   const [members] = useState<TeamMember[]>(() => {
     if (initialMembers && initialMembers.length > 0) {
       return initialMembers;
@@ -49,14 +57,14 @@ export const TeamRosterView: React.FC<TeamRosterViewProps> = ({ initialMembers }
       {/* Left Column: 3D Typography */}
       <div className="slide-left-col">
         <h1 className="title-3d-extruded">
-          <span className="title-line-base">Inteligencia</span>
-          <span className="title-line-highlight">Artificial</span>
+          <span className="title-line-base">{title}</span>
+          <span className="title-line-highlight">{titleHighlight}</span>
         </h1>
 
         <div className="title-neon-bar" />
 
         <p className="slide-description-lead">
-          Nómina oficial de expositores y asignación temática sobre <strong>Inteligencia Artificial</strong> y <strong>La Computadora en las Áreas del Saber</strong>.
+          {description}
         </p>
       </div>
 
